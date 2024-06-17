@@ -1,2 +1,33 @@
-/target
-.idea
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# exclude any development-specific files
+.vscode/
+.idea/
+
+# exclude any dependency directories
+node_modules/
+vendor/
+
+# exclude build artifacts
+target/
+build/
+dist/
+bin/
+tmp/
+log/
+
+# exclude any development-specific files
+*.env
+*.log
+*.out
+*.test
+
+# exclude any generated files
+.DS_Store
+.data
+qodana.yaml

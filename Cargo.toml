@@ -14,3 +14,4 @@ thiserror = "1.0.61"
 todo = { git = "https://github.com/bulutcan99/todo-app.git", version = "0.1.0" }
 tokio = { version = "1.38.0", features = ["full"] }
 warp = "0.3.7"
+config = "0.14.0"
