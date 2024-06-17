@@ -1,26 +1,32 @@
-// use sqlx::postgres::PgPoolOptions;
-// use sqlx::{Pool, Postgres};
-// use std::error::Error;
-// use std::time::Duration;
-//
-// pub type Db = Pool<Postgres>;
-//
-// pub fn init_db() -> Result<Db, sqlx::Error>{
-//
-// }
-//
-// async fn new_db_pool(
-//     host: &str,
-//     port: &u8,
-//     user: &str,
-//     password: &str,
-//     db_name: &str,
-//     max_conn: &u32
-// ) -> Result<Db, sqlx::Error> {
-//     let db_url = format!("postgres://{}:{}@{}:{}/{}", user, password, host, port, db_name);
-//     PgPoolOptions::new()
-//         .max_connections(*max_conn)
-//         .connect_timeout(Duration::from_millis(500))  // 500 ms connection timeout
-//         .connect(&db_url)
-//         .await
-// }
+use std::time::Duration;
+
+use sqlx::{Pool, Postgres};
+use sqlx::postgres::PgPoolOptions;
+
+use crate::settings::Database;
+
+pub type Db = Pool<Postgres>;
+
+pub async fn init_db(config_db: Database) -> Result<Db, sqlx::Error> {
+	match new_db_pool(&config_db.url, &config_db.max_conn).await {
+		Ok(db) => {
+			println!("Database connection successful.");
+			Ok(db)
+		}
+		Err(e) => {
+			eprintln!("Database connection failed: {}", e);
+			Err(e)
+		}
+	}
+}
+
+async fn new_db_pool(
+	url: &str,
+	max_conn: &u32,
+) -> Result<Db, sqlx::Error> {
+	PgPoolOptions::new()
+		.max_connections(*max_conn)
+		.acquire_timeout(Duration::from_secs(30))
+		.connect(&url)
+		.await
+}
