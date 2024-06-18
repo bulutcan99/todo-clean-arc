@@ -6,8 +6,8 @@ use serde_derive::Deserialize;
 #[derive(Debug, Deserialize)]
 #[allow(unused)]
 pub struct Database {
-	pub url: String,
-	pub max_conn: u32,
+	pub url: Option<String>,
+	pub max_conn: Option<u32>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -30,12 +30,7 @@ impl Settings {
 			.add_source(File::with_name("src/config/local").required(false))
 			.add_source(Environment::with_prefix("app"))
 			.build()?;
-
-		// Now that we're done, let's access our configuration
-		println!("debug: {:?}", s.get_bool("debug"));
-		println!("database: {:?}", s.get::<String>("database.url"));
-
-		// You can deserialize (and thus freeze) the entire configuration as
+		println!("Config built.");
 		s.try_deserialize()
 	}
 }

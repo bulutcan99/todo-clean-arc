@@ -19,5 +19,4 @@ async fn main() {
 			eprintln!("Error: {}", e);
 		}
 	}
-	println!("Hello, world!");
 }

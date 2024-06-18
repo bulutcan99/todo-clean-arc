@@ -1,10 +1,10 @@
 # ==================================================================================== #
 # VARIABLES
 # ==================================================================================== #
-BINARY_NAME := todo
+BINARY_NAME := Todo
 HTTP_MAIN_PACKAGE_PATH := src/http
-MIGRATION_FOLDER := src/internal/adapter/storage/postgres/migration
-DB_URL := postgresql://postgres:P@ssw0rd@localhost:5432/postgres?sslmode=disable
+MIGRATION_FOLDER := src/migrations
+DB_URL := postgres://postgres:pass@localhost:5432/Todo?sslmode=disable
 
 # ==================================================================================== #
 # DB
@@ -16,22 +16,25 @@ drop-db:
 	docker exec -it postgres dropdb postgres
 
 migrate-up:
-	diesel migration run --migration-dir=$(MIGRATION_FOLDER) --database-url=$(DB_URL)
+	migrate -path "$(MIGRATION_FOLDER)" -database "$(DB_URL)" -verbose up
 
 migrate-up1:
-	diesel migration run --migration-dir=$(MIGRATION_FOLDER) --database-url=$(DB_URL) --step 1
+	migrate -path "$(MIGRATION_FOLDER)" -database "$(DB_URL)" -verbose up 1
 
 migrate-down:
-	diesel migration revert --migration-dir=$(MIGRATION_FOLDER) --database-url=$(DB_URL)
+	migrate -path "$(MIGRATION_FOLDER)" -database "$(DB_URL)" -verbose down
 
 migrate-down1:
-	diesel migration revert --migration-dir=$(MIGRATION_FOLDER) --database-url=$(DB_URL) --step 1
+	migrate -path "$(MIGRATION_FOLDER)" -database "$(DB_URL)" -verbose down 1
 
 new-migration:
-	diesel migration generate $(name) --migration-dir=$(MIGRATION_FOLDER)
+	migrate create -ext sql -dir "$(MIGRATION_FOLDER)" -seq $(name)
 
 migrate-force:
-	diesel migration run --migration-dir=$(MIGRATION_FOLDER) --database-url=$(DB_URL) --force
+	migrate -path $(MIGRATION_FOLDER) -database "$(DB_URL)" force 1
+
+db-docs:
+	dbdocs build doc/db.dbml
 
 # ==================================================================================== #
 # HELPERS
@@ -42,10 +45,12 @@ help:
 	@echo 'Usage:'
 	@sed -n 's/^##//p' ${MAKEFILE_LIST} | column -t -s ':' | sed -e 's/^/ /'
 
+## confirm: prompt for confirmation
 .PHONY: confirm
 confirm:
 	@echo -n 'Are you sure? [y/N] ' && read ans && [ $${ans:-N} = y ]
 
+## no-dirty: ensure no dirty state in git
 .PHONY: no-dirty
 no-dirty:
 	git diff --exit-code
@@ -84,10 +89,56 @@ clean:
 test:
 	cargo test --verbose
 
-## test-cover: run all tests and display coverage
-.PHONY: test-cover
-test-cover:
-	cargo tarpaulin --verbose --out Html
+## test-watch: run tests continuously when code changes
+.PHONY: test-watch
+test-watch:
+	cargo watch -x test
+
+## test-release: run tests in release mode
+.PHONY: test-release
+test-release:
+	cargo test --release --verbose
+
+## test-specific: run a specific test
+.PHONY: test-specific
+test-specific:
+	@echo "Usage: make test-specific TEST=<test_name>"
+	cargo test --verbose $(TEST)
+
+## test-doc: run documentation tests
+.PHONY: test-doc
+test-doc:
+	cargo test --doc --verbose
+
+## test-lib: run library tests
+.PHONY: test-lib
+test-lib:
+	cargo test --lib --verbose
+
+## test-bin: run binary tests
+.PHONY: test-bin
+test-bin:
+	cargo test --bin $(BINARY_NAME) --verbose
+
+## test-examples: run examples tests
+.PHONY: test-examples
+test-examples:
+	cargo test --examples --verbose
+
+## test-bench: run benchmarks
+.PHONY: test-bench
+test-bench:
+	cargo bench
+
+## test-features: run tests with all features
+.PHONY: test-features
+test-features:
+	cargo test --all-features --verbose
+
+## test-no-default-features: run tests without default features
+.PHONY: test-no-default-features
+test-no-default-features:
+	cargo test --no-default-features --verbose
 
 # ==================================================================================== #
 # BUILD & RUN
@@ -102,7 +153,7 @@ build:
 run: build
 	./target/release/${BINARY_NAME}
 
-## run-http: run the http application
+## run-http: run the HTTP application
 .PHONY: run-http
 run-http:
 	cargo run --bin ${HTTP_MAIN_PACKAGE_PATH}
@@ -111,17 +162,20 @@ run-http:
 # Docker
 # ==================================================================================== #
 ## docker-compose: run docker-compose
-docker-compose: docker-compose-stop docker-compose-start
 .PHONY: docker-compose
+docker-compose: docker-compose-stop docker-compose-start
 
+## docker-compose-start: start docker-compose
 .PHONY: docker-compose-start
 docker-compose-start:
 	docker-compose up --build
 
+## docker-dependency-start: start core docker dependencies
 .PHONY: docker-dependency-start
 docker-dependency-start:
 	docker-compose -f docker-compose-core.yaml up -d
 
+## docker-compose-stop: stop docker-compose
 .PHONY: docker-compose-stop
 docker-compose-stop:
 	docker-compose down
