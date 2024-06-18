@@ -3,20 +3,20 @@
 use settings::Settings;
 
 mod settings;
-mod model;
-mod security;
-mod web;
 
 #[tokio::main]
 async fn main() {
 	let settings = Settings::new();
 	match settings {
 		Ok(settings) => {
-			let db_conn = model::db::init_db(settings.database)
-				.await.expect("Failed to connect to database.");
+			run_application(settings).await;
 		}
 		Err(e) => {
-			eprintln!("Error: {}", e);
+			eprintln!("Error: {:?}", e);
 		}
 	}
+}
+
+async fn run_application(settings: Settings) {
+	println!("Running application");
 }

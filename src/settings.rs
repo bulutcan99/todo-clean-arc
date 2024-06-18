@@ -22,12 +22,12 @@ impl Settings {
 		let run_mode = env::var("RUN_MODE").unwrap_or_else(|_| "development".into());
 
 		let s = Config::builder()
-			.add_source(File::with_name("src/config/default"))
+			.add_source(File::with_name("default"))
 			.add_source(
-				File::with_name(&format!("src/config/{}", run_mode))
+				File::with_name(&format!("{}", run_mode))
 					.required(false),
 			)
-			.add_source(File::with_name("src/config/local").required(false))
+			.add_source(File::with_name("local").required(false))
 			.add_source(Environment::with_prefix("app"))
 			.build()?;
 		println!("Config built.");

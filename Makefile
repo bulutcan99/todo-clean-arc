@@ -1,10 +1,10 @@
 # ==================================================================================== #
 # VARIABLES
 # ==================================================================================== #
-BINARY_NAME := Todo
+BINARY_NAME := todo
 HTTP_MAIN_PACKAGE_PATH := src/http
 MIGRATION_FOLDER := src/migrations
-DB_URL := postgres://postgres:pass@localhost:5432/Todo?sslmode=disable
+DB_URL := postgres://postgres:pass@localhost:5432/todo?sslmode=disable
 
 # ==================================================================================== #
 # DB
