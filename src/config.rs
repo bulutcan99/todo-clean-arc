@@ -11,10 +11,17 @@ pub struct Database {
 }
 
 #[derive(Debug, Deserialize)]
+pub struct HTTP {
+	pub host: String,
+	pub port: u16,
+}
+
+#[derive(Debug, Deserialize)]
 #[allow(unused)]
 pub struct Settings {
 	debug: bool,
 	pub database: Database,
+	pub http: HTTP,
 }
 
 impl Settings {

@@ -3622,6 +3622,7 @@ dependencies = [
  "jsonwebtoken",
  "log",
  "serde",
+ "serde_derive",
  "serde_json",
  "surrealdb",
  "tokio",
