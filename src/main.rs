@@ -1,8 +1,8 @@
 #![allow(unused)]
 
-use settings::Settings;
+use config::Settings;
 
-mod settings;
+mod config;
 
 #[tokio::main]
 async fn main() {
