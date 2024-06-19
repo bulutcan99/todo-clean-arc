@@ -3,6 +3,11 @@
 use config::Settings;
 
 mod config;
+mod db;
+mod handler;
+mod model;
+mod service;
+
 
 #[tokio::main]
 async fn main() {
