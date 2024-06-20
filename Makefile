@@ -89,11 +89,6 @@ clean:
 test:
 	cargo test --verbose
 
-## test-watch: run tests continuously when code changes
-.PHONY: test-watch
-test-watch:
-	cargo watch -x test
-
 ## test-release: run tests in release mode
 .PHONY: test-release
 test-release:
@@ -153,10 +148,10 @@ build:
 run: build
 	./target/release/${BINARY_NAME}
 
-## run-http: run the HTTP application
-.PHONY: run-http
-run-http:
-	cargo run --bin ${HTTP_MAIN_PACKAGE_PATH}
+## watch: watch for changes and run the application
+.PHONY: watch
+watch:
+    cargo watch -q -c -x run
 
 # ==================================================================================== #
 # Docker
