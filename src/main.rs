@@ -28,8 +28,6 @@ async fn main() -> Result<(), Error> {
 		updated_at: None,
 		todos: vec![],
 	};
-	user_repo.insert_user(&user).await?;
-	let all_users = user_repo.get_all_users().await?;
 	println!("🚀 SurrealDB initialize successfully");
 	let cors = CorsLayer::new()
 		.allow_origin("http://localhost:8080".parse::<HeaderValue>().unwrap())
