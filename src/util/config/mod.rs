@@ -1,19 +1,20 @@
 use std::env;
 
-use config::{Config, ConfigError, Environment, File};
+use ::config::{Config, ConfigError, Environment, File};
 use serde_derive::Deserialize;
 
 #[derive(Debug, Deserialize)]
 #[allow(unused)]
 pub struct Database {
 	pub url: Option<String>,
-	pub max_conn: Option<u32>,
+	pub username: Option<String>,
+	pub password: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
 pub struct HTTP {
-	pub host: String,
-	pub port: u16,
+	pub host: Option<String>,
+	pub port: Option<u16>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -37,7 +38,6 @@ impl Settings {
 			.add_source(File::with_name("local").required(false))
 			.add_source(Environment::with_prefix("app"))
 			.build()?;
-		println!("Config built.");
 		s.try_deserialize()
 	}
 }

@@ -1,7 +1,6 @@
 [database]
-url = "postgres://postgres:pass@localhost:5432/todo?sslmode=disable"
-max_conn = 10
+url = "localhost:8000"
 
 [http]
 host = "localhost"
-port = 8000
+port = 8080
