@@ -9,6 +9,9 @@ pub struct Database {
 	pub url: Option<String>,
 	pub username: Option<String>,
 	pub password: Option<String>,
+	pub db_name: Option<String>,
+	pub user_table: Option<String>,
+	pub todo_table: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
