@@ -4,6 +4,14 @@ use surrealdb::engine::remote::ws::Client;
 use crate::domain::user::User;
 use crate::util::config::Settings;
 
+pub trait UserRepositoryTrait {
+	fn get_all_users(&self) -> Result<Vec<User>, Error>;
+	fn get_user_by_id(&self, id: &str) -> Result<User, Error>;
+	fn insert_user(&self, content: &User) -> Result<Vec<User>, Error>;
+	fn update_user(&self, id: &str, user: &User) -> Result<User, Error>;
+	fn delete_user(&self, id: &str) -> Result<User, Error>;
+}
+
 pub struct UserRepository {
 	table: String,
 	client: Surreal<Client>,
@@ -11,13 +19,15 @@ pub struct UserRepository {
 
 impl UserRepository {
 	pub fn new(config: &Settings, client: Surreal<Client>) -> Self {
-		let table_name = config.database.todo_table.as_deref().unwrap_or("user");
+		let table_name = config.database.user_table.as_deref().unwrap_or("user");
 		UserRepository {
 			table: table_name.to_string(),
 			client,
 		}
 	}
+}
 
+impl UserRepositoryTrait for UserRepository {
 	async fn get_all_users(&self) -> Result<Vec<User>, Error> {
 		let records = self.client.select(&self.table).await?;
 		Ok(records)
