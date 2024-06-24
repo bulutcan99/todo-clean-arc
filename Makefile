@@ -118,7 +118,7 @@ test-no-default-features:
 ## Development and Execution
 .PHONY: watch
 watch:
-	cargo watch -q -c -x run
+	cargo watch -q -c -w src/ -x run
 
 # DOCKER
 ## Docker Compose Operations
