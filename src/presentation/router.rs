@@ -1,7 +1,7 @@
 use axum::Router;
 use axum::routing::get;
 
-use crate::api::server_handler::health_checker_handler;
+use crate::presentation::server_handler::health_checker_handler;
 
 pub fn create_router() -> Router {
 	Router::new()

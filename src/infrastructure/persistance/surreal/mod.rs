@@ -1,22 +1,25 @@
-use once_cell::unsync::Lazy;
-use surrealdb::{Error, Surreal};
-use surrealdb::engine::remote::ws::{Client, Ws};
-use surrealdb::opt::auth::Root;
+use crate::config::Settings;
 
-use crate::util::config::Settings;
+pub mod repository;
+
+
+pub trait DBEnginer {
+	fn new() -> Self;
+	fn connect(&self, config: &Settings) -> Result<(), Error>;
+}
 
 pub struct DB {
 	pub client: Lazy<Surreal<Client>>,
 }
 
-impl DB {
-	pub fn new() -> Self {
+impl DBEnginer for DB {
+	fn new() -> Self {
 		DB {
 			client: Lazy::new(|| Surreal::init()),
 		}
 	}
 
-	pub async fn connect(&self, config: &Settings) -> Result<(), Error> {
+	async fn connect(&self, config: &Settings) -> Result<(), Error> {
 		let db = self.client.clone();
 		let url = config.database.url.as_deref().unwrap_or("localhost:8000");
 		let username = config.database.username.as_deref().unwrap_or("root");

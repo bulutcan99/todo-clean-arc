@@ -1,7 +1,7 @@
-use surrealdb::{Error, Surreal};
-use surrealdb::engine::remote::ws::Client;
+use surrealdb::Error;
 
 use crate::domain::user::User;
+use crate::infrastructure::storage::surreal::surreal_db::DBEnginer;
 use crate::util::config::Settings;
 
 pub trait UserRepositoryTrait {
@@ -12,29 +12,35 @@ pub trait UserRepositoryTrait {
 	fn delete_user(&self, id: &str) -> Result<User, Error>;
 }
 
-pub struct UserRepository {
+pub struct UserRepository<T: DBEnginer> {
 	table: String,
-	client: Surreal<Client>,
+	db: T,
 }
 
-impl UserRepository {
-	pub fn new(config: &Settings, client: Surreal<Client>) -> Self {
+impl<T> UserRepository<T>
+where
+	T: DBEnginer,
+{
+	pub fn new(config: &Settings, db: T) -> Self {
 		let table_name = config.database.user_table.as_deref().unwrap_or("user");
 		UserRepository {
 			table: table_name.to_string(),
-			client,
+			db,
 		}
 	}
 }
 
-impl UserRepositoryTrait for UserRepository {
+impl<T> UserRepositoryTrait for UserRepository<T>
+where
+	T: DBEnginer,
+{
 	async fn get_all_users(&self) -> Result<Vec<User>, Error> {
-		let records = self.client.select(&self.table).await?;
+		let records = self.db.select(&self.table).await?;
 		Ok(records)
 	}
 
 	async fn get_user_by_id(&self, id: &str) -> Result<User, Error> {
-		if let Some(record) = self.client.select((&self.table, id)).await? {
+		if let Some(record) = self.db.select((&self.table, id)).await? {
 			return Ok(record);
 		}
 
@@ -46,12 +52,12 @@ impl UserRepositoryTrait for UserRepository {
 	}
 
 	async fn insert_user(&self, content: &User) -> Result<Vec<User>, Error> {
-		let record = self.client.insert(&self.table).content(&content).await?;
+		let record = self.db.insert(&self.table).content(&content).await?;
 		Ok((record))
 	}
 
 	async fn update_user(&self, id: &str, user: &User) -> Result<User, Error> {
-		let record = self.client
+		let record = self.db
 			.update((&self.table, id))
 			.content(&user)
 			.await?.
@@ -61,7 +67,7 @@ impl UserRepositoryTrait for UserRepository {
 	}
 
 	async fn delete_user(&self, id: &str) -> Result<User, Error> {
-		let result = self.client.delete((&self.table, id)).await?.unwrap();
+		let result = self.db.delete((&self.table, id)).await?.unwrap();
 		Ok(result)
 	}
 }
