@@ -1,6 +1,8 @@
-use chrono::{DateTime, Local};
+use chrono::{DateTime, Utc};
 use serde_derive::{Deserialize, Serialize};
 use uuid::Uuid;
+
+use crate::application::common::date_time::DateService;
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct User {
@@ -9,21 +11,20 @@ pub struct User {
 	pub surname: String,
 	pub email: String,
 	pub password_hash: String,
-	pub created_at: DateTime<Local>,
-	pub updated_at: DateTime<Local>,
+	pub created_at: DateTime<Utc>,
+	pub updated_at: DateTime<Utc>,
 }
 
 impl User {
 	pub fn new(name: String, surname: String, email: String, password_hash: String) -> Self {
-		let now = Local::now();
 		User {
 			id: None,
 			name,
 			surname,
 			email,
 			password_hash,
-			created_at: now,
-			updated_at: now,
+			created_at: DateService::get_curent_timestamp_utc(),
+			updated_at: DateService::get_curent_timestamp_utc(),
 		}
 	}
 
@@ -40,7 +41,7 @@ impl User {
 		if let Some(email) = email {
 			self.email = email;
 		}
-		self.updated_at = Local::now();
+		self.updated_at = DateService::get_curent_timestamp_utc();
 	}
 }
 
