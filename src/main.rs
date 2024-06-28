@@ -3,11 +3,9 @@ use axum::http::{HeaderValue, Method};
 use axum::http::header::{ACCEPT, AUTHORIZATION, CONTENT_TYPE};
 use tower_http::cors::CorsLayer;
 
-use todo::infrastructure::storage::surreal::surreal_db::{DB, DBEnginer};
-use todo::infrastructure::storage::surreal::todo_repository::TodoRepository;
-use todo::infrastructure::storage::surreal::user_repository::UserRepository;
+use todo::infrastructure::config::Settings;
+use todo::infrastructure::persistance::surreal::{DB, DBEnginer};
 use todo::presentation::router::create_router;
-use todo::util::config::Settings;
 
 #[tokio::main]
 async fn main() -> Result<(), Error> {
