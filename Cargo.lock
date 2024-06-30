@@ -3439,9 +3439,11 @@ dependencies = [
  "serde_derive",
  "serde_json",
  "surrealdb",
+ "thiserror",
  "tokio",
  "tower-http",
  "uuid",
+ "validator",
 ]
 
 [[package]]
@@ -3807,6 +3809,21 @@ dependencies = [
  "getrandom",
  "serde",
  "wasm-bindgen",
+]
+
+[[package]]
+name = "validator"
+version = "0.18.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "db79c75af171630a3148bd3e6d7c4f42b6a9a014c2945bc5ed0020cbb8d9478e"
+dependencies = [
+ "idna",
+ "once_cell",
+ "regex",
+ "serde",
+ "serde_derive",
+ "serde_json",
+ "url",
 ]
 
 [[package]]
