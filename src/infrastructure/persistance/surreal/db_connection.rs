@@ -7,7 +7,7 @@ use surrealdb::opt::auth::Root;
 use surrealdb::Surreal;
 
 use crate::infrastructure::config::Settings;
-use crate::infrastructure::persistance::surreal::interface::DBEnginer;
+use crate::infrastructure::persistance::surreal::db::DBEnginer;
 
 pub struct DB {
 	pub client: Arc<Surreal<Client>>,

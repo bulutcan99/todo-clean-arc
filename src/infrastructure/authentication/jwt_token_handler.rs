@@ -1,11 +1,6 @@
 use async_trait::async_trait;
 use jsonwebtoken::{decode, DecodingKey, encode, EncodingKey, Header, Validation};
 
-use crate::{
-	application::common::{errors::Error, r#type::AppResult},
-	application::common::interface::authentication::jwt_token_handler::{IJwtTokenHandler, JwtPayload}, config::AuthenticationConfig, domain::entities::user::User, infrastructure::common::date_service::DateService,
-};
-
 //TODO: handle this task async
 //TODO: handle error here
 pub struct JwtTokenHandler {
