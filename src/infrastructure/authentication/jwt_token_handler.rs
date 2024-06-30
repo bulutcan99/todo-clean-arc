@@ -2,8 +2,8 @@ use async_trait::async_trait;
 use jsonwebtoken::{decode, DecodingKey, encode, EncodingKey, Header, Validation};
 
 use crate::{
-    application::common::{errors::Error, r#type::AppResult},
-    application::common::interfaces::authentication::jwt_token_handler::{IJwtTokenHandler, JwtPayload}, config::AuthenticationConfig, domain::entities::user::User, infrastructure::common::date_service::DateService,
+	application::common::{errors::Error, r#type::AppResult},
+	application::common::interface::authentication::jwt_token_handler::{IJwtTokenHandler, JwtPayload}, config::AuthenticationConfig, domain::entities::user::User, infrastructure::common::date_service::DateService,
 };
 
 //TODO: handle this task async
@@ -33,7 +33,7 @@ impl IJwtTokenHandler for JwtTokenHandler {
 		let payload = JwtPayload {
 			user_id: user.id,
 			exp: expire_time,
-        };
+		};
 
 		let token = encode(
 			&Header::default(),
@@ -47,10 +47,10 @@ impl IJwtTokenHandler for JwtTokenHandler {
 
 	fn decode_token(&self, token: &str) -> AppResult<JwtPayload> {
 		let decoded_token = decode::<JwtPayload>(
-            token,
-            &DecodingKey::from_secret(self.secret.as_ref()),
-            &Validation::default(),
-        );
+			token,
+			&DecodingKey::from_secret(self.secret.as_ref()),
+			&Validation::default(),
+		);
 
 		match decoded_token {
 			Ok(value) => {
