@@ -7,17 +7,16 @@ use surrealdb::opt::auth::Root;
 use surrealdb::Surreal;
 
 use crate::infrastructure::config::Settings;
-use crate::infrastructure::persistance::surreal::db::DBEnginer;
 
 pub struct DB {
 	pub client: Arc<Surreal<Client>>,
 }
 
 #[async_trait]
-impl DBEnginer for DB {
+impl DB {
 	async fn new() -> Self {
 		DB {
-			client: Arc::new(Surreal::new(Client::new()).await.unwrap()),
+			client: Arc::new((Surreal::new::<Ws>("127.0.0.1:8000").await.unwrap())),
 		}
 	}
 
@@ -39,5 +38,7 @@ impl DBEnginer for DB {
 		Ok(())
 	}
 
-	async fn disconnect(&self) -> Result<(), Error> {}
+	async fn disconnect(&self) -> Result<(), Error> {
+		Ok(())
+	}
 }
