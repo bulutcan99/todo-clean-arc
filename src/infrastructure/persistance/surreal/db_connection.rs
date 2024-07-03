@@ -21,7 +21,7 @@ impl DB {
 	}
 
 	async fn connect(&self, config: &Settings) -> Result<(), Error> {
-		let db = self.client.clone();
+		let db = self.client;
 		let url = config.database.url.as_deref().unwrap_or("localhost:8000");
 		let username = config.database.username.as_deref().unwrap_or("root");
 		let password = config.database.password.as_deref().unwrap_or("root");

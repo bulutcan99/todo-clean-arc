@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="CargoProjects">
+    <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fa653cb7-ddab-47b2-9445-e2796d1b7fa6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/common/interface/persistance/db/db.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/infrastructure/persistance/surreal/db_connection.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/persistance/surreal/db_connection.rs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Rust File" />
+      </list>
+    </option>
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;easytraveldevelopment&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/bulutcan99/todo-app.git&quot;,
+    &quot;accountId&quot;: &quot;ef58b8c4-1950-497e-8a97-796a6b234bcd&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/.cargo/registry/src/index.crates.io-6f17d22bba15001f/config-0.14.0/src/config.rs" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="cdy7ozkx" />
+  </component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2hsds05Bf4PjbmL5od7oy0JJaC8" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showScratchesAndConsoles" value="false" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Cargo.Test model::todo::tests::tests::test_model_todo_insert_todo.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.rust.reset.selective.auto.import": "true",
+    "code.cleanup.on.save": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/bulutgocer/PROJECTS/RUST/github/bulutcan99/todo",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "org.rust.cargo.project.model.PROJECT_DISCOVERY": "true",
+    "org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon": "",
+    "org.rust.disableDetachedFileInspection/Users/bulutgocer/PROJECTS/RUST/github/bulutcan99/todo/src/_tests/model_db.rs": "true",
+    "org.rust.disableDetachedFileInspection/Users/bulutgocer/PROJECTS/RUST/github/bulutcan99/todo/src/config/config.rs": "true",
+    "org.rust.disableDetachedFileInspection/Users/bulutgocer/PROJECTS/RUST/github/bulutcan99/todo/src/infrastructure/storage/db_context/surreal_context.rs": "true",
+    "org.rust.disableDetachedFileInspection/Users/bulutgocer/PROJECTS/RUST/github/bulutcan99/todo/src/model/db.rs": "true",
+    "org.rust.disableDetachedFileInspection/Users/bulutgocer/PROJECTS/RUST/github/bulutcan99/todo/src/model/mod.rs": "true",
+    "org.rust.disableDetachedFileInspection/Users/bulutgocer/PROJECTS/RUST/github/bulutcan99/todo/src/util/jwt/jwt.rs": "true",
+    "org.rust.first.attach.projects": "true",
+    "org.rust.hideNoCargoProjectNotifications/Users/bulutgocer/PROJECTS/RUST/github/bulutcan99/todo/src/settings.rs": "true",
+    "rearrange.code.on.save": "true",
+    "settings.editor.selected.configurable": "preferences.general"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/application/common" />
+      <recent name="$PROJECT_DIR$/src/application/common/interface" />
+      <recent name="$PROJECT_DIR$/src/application/repository" />
+      <recent name="$PROJECT_DIR$/src/infrastructure/persistance/surreal/repository" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/application/common/interface/persistance/db" />
+      <recent name="$PROJECT_DIR$/src/application/common/interface/persistance" />
+      <recent name="$PROJECT_DIR$/src/application/common/util" />
+      <recent name="$PROJECT_DIR$/src/infrastructure/persistance/surreal/repository" />
+      <recent name="$PROJECT_DIR$/src/infrastructure/persistance" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Cargo.Test model::todo::tests::tests::test_model_todo_insert_todo">
+    <configuration name="Run todo" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+      <option name="command" value="run --package todo --bin todo" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <option name="emulateTerminal" value="true" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="false" />
+      <option name="withSudo" value="false" />
+      <option name="buildTarget" value="REMOTE" />
+      <option name="backtrace" value="SHORT" />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test model::todo::tests::tests::test_model_todo_insert_todo" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package todo --bin todo model::todo::tests::tests::test_model_todo_insert_todo -- --exact" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <option name="emulateTerminal" value="true" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="false" />
+      <option name="withSudo" value="false" />
+      <option name="buildTarget" value="REMOTE" />
+      <option name="backtrace" value="SHORT" />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test todo" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+      <option name="command" value="test --workspace" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <option name="emulateTerminal" value="true" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="false" />
+      <option name="withSudo" value="false" />
+      <option name="buildTarget" value="REMOTE" />
+      <option name="backtrace" value="SHORT" />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Cargo.Test model::todo::tests::tests::test_model_todo_insert_todo" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="RustProjectSettings">
+    <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fa653cb7-ddab-47b2-9445-e2796d1b7fa6" name="Changes" comment="" />
+      <created>1718386921197</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1718386921197</updated>
+      <workItem from="1718386922231" duration="3076000" />
+      <workItem from="1718630628256" duration="15261000" />
+      <workItem from="1718709409765" duration="16794000" />
+      <workItem from="1718828134888" duration="2718000" />
+      <workItem from="1718913879326" duration="31519000" />
+      <workItem from="1719066967356" duration="7574000" />
+      <workItem from="1719211725622" duration="1536000" />
+      <workItem from="1719235596479" duration="4485000" />
+      <workItem from="1719498663314" duration="9030000" />
+      <workItem from="1719559587090" duration="6411000" />
+      <workItem from="1719587155243" duration="1850000" />
+      <workItem from="1719774076392" duration="7182000" />
+      <workItem from="1719830188741" duration="1495000" />
+      <workItem from="1719862101196" duration="2495000" />
+      <workItem from="1719868676918" duration="888000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="Makefile" />
+  </component>
+</project>
